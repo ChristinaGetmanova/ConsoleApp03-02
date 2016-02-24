@@ -124,12 +124,11 @@ class Population2 : public Population<int>
 {
 public:
 	Population2(const int number_of_genotype, vector<Genotype<int>> gens) : Population(number_of_genotype, gens),
-		old_population_fitness(0), young_population_fitness(0)
+		young_population_fitness(0)
 	{ }
 
 	void genotype_sort()
 	{
-		old_population_fitness = count_fitness();
 		sort(population.begin(), population.end(), cmp);
 		auto count = population.size();
 		for (int i = count; i > count / 2; i--)
@@ -137,7 +136,6 @@ public:
 	}
 
 private:
-	double old_population_fitness;
 	double young_population_fitness;
 
 	double count_fitness()
